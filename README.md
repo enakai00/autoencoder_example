@@ -19,7 +19,7 @@ git clone https://github.com/enakai00/autoencoder_example
 cd autoencoder_example
 PROJECT_ID=$(gcloud config list project --format "value(core.project)")
 BUCKET="gs://${PROJECT_ID}-mnist"
-gsutil mkdir $BUCKET
+gsutil mkdir -c regional -l us-central1 $BUCKET 
 ./scripts/create_records.py
 gsutil cp /tmp/data/train.tfrecords ${BUCKET}/data/
 gsutil cp /tmp/data/test.tfrecords ${BUCKET}/data/
